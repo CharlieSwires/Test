@@ -225,8 +225,4 @@ weatherApp.controller('updateController3', ['$scope', '$sce', '$http', '$routePa
 
     })
 
-
-
-    // console.log($scope.testSex);
-    // console.log($scope.testName);
 }]);

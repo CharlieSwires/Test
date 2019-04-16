@@ -1,0 +1,15 @@
+<p>
+    <a href="#/">Back to choice</a>
+</p>
+
+<hr>Create</hr>
+<form>
+<div class="input-group mb-3">
+    <input type="text" class="form-control" ng-model="testName" placeholder="Name" aria-label="Name" value="{{testName}}"/>
+</div>
+<select name="genderOption" ng-model="genderOption" ng-selected="genderOption" 
+    ng-options="genderType.id as genderType.gender for genderType in genderList.results" >
+</select>
+<br />
+<a href="#/create/{{testName}}/{{genderOption}}" class="btn btn-primary">Create</a>
+</form>

@@ -1,7 +1,7 @@
 
 
 // CONTROLLERS
-weatherApp.controller('homeController', ['$scope', function ($scope ) {
+weatherApp.controller('homeController', ['$scope','$sce', function ($scope,$sce ) {
 
     // $scope.testId = testService.testId;
     // $scope.testName = paramService.testName;
@@ -16,7 +16,24 @@ weatherApp.controller('homeController', ['$scope', function ($scope ) {
     // $scope.$watch('testSex', function () {
     //     testService.testSex = $scope.testSex;
     // });
+    
+    $scope.trustSrc = function (src) {
+        return $sce.trustAsResourceUrl(src);
+    }
 
+    
+	$scope.t1="Empty";
+	$scope.t2="ASC";
+    $scope.src = $scope.trustSrc("http://localhost:8080/jpa-test/test/getAllGender/"+$scope.t1+'/'+$scope.t2 + '');
+	console.log("$scope.src="+$scope.src);
+	
+	$scope.refresh = function(item){
+		$scope.t2= $scope.t2 == "ASC"?"DESC":"ASC";
+
+    	$scope.src = $scope.trustSrc("http://localhost:8080/jpa-test/test/getAllGender/"+$scope.t1+'/'+$scope.t2 + '');
+		console.log("$scope.src="+$scope.src);
+
+	}
 }]);
 
 weatherApp.controller('forecastController', ['$scope', '$resource', '$sce', '$http', function ($scope, $resource, $sce, $http) {
@@ -226,3 +243,4 @@ weatherApp.controller('updateController3', ['$scope', '$sce', '$http', '$routePa
     })
 
 }]);
+
